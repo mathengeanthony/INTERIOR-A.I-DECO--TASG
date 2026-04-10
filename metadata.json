@@ -1,0 +1,7 @@
+{
+  "name": "Amari Sekani AI Interior",
+  "description": "AR-powered AI interior design experience for luxury real estate, allowing users to furnish and style properties in real-time.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
