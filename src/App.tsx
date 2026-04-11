@@ -13,7 +13,7 @@ export default function App() {
   const [view, setView] = useState<'dossier' | 'deco'>('dossier');
 
   return (
-    <div className="min-h-screen bg-AMARI-black text-white selection:bg-AMARI-gold selection:text-black">
+    <div className="min-h-screen bg-AMARI-black text-AMARI-text selection:bg-AMARI-gold selection:text-black transition-colors duration-300">
       <AnimatePresence mode="wait">
         {view === 'dossier' ? (
           <motion.div 
@@ -49,47 +49,47 @@ export default function App() {
             <div className="px-6 py-8 max-w-4xl mx-auto w-full flex-1">
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h1 className="text-3xl md:text-5xl font-bold uppercase tracking-tighter leading-none mb-2 text-white">The Vanguard Penthouse</h1>
-                  <p className="flex items-center text-xs text-gray-400 font-mono uppercase tracking-widest">
+                  <h1 className="text-3xl md:text-5xl font-bold uppercase tracking-tighter leading-none mb-2 text-AMARI-text">The Vanguard Penthouse</h1>
+                  <p className="flex items-center text-xs text-AMARI-text-muted font-mono uppercase tracking-widest">
                     <MapPin className="w-3 h-3 text-AMARI-gold mr-2" /> Westlands, Nairobi
                   </p>
                 </div>
                 <div className="text-right">
                   <p className="text-2xl font-bold text-AMARI-gold font-mono">$2,800,000</p>
-                  <p className="text-[10px] text-gray-500 uppercase tracking-widest">Acquisition Price</p>
+                  <p className="text-[10px] text-AMARI-text-muted uppercase tracking-widest">Acquisition Price</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 <div className="space-y-4">
                   <h3 className="text-sm font-bold uppercase tracking-widest text-AMARI-gold">Property Dossier</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">
+                  <p className="text-sm text-AMARI-text-muted leading-relaxed">
                     Suspended 42 floors above the pulsing heart of the Silicon Savannah, The Vanguard Penthouse is a masterclass in vertical wealth.
                   </p>
                   <div className="flex gap-4 pt-4">
                     <div className="text-center">
                       <p className="text-xl font-bold font-mono">4</p>
-                      <p className="text-[9px] text-gray-500 uppercase">Beds</p>
+                      <p className="text-[9px] text-AMARI-text-muted uppercase">Beds</p>
                     </div>
-                    <div className="text-center border-l border-white/10 pl-4">
+                    <div className="text-center border-l border-AMARI-border pl-4">
                       <p className="text-xl font-bold font-mono">4.5</p>
-                      <p className="text-[9px] text-gray-500 uppercase">Baths</p>
+                      <p className="text-[9px] text-AMARI-text-muted uppercase">Baths</p>
                     </div>
-                    <div className="text-center border-l border-white/10 pl-4">
+                    <div className="text-center border-l border-AMARI-border pl-4">
                       <p className="text-xl font-bold font-mono">6,200</p>
-                      <p className="text-[9px] text-gray-500 uppercase">SqFt</p>
+                      <p className="text-[9px] text-AMARI-text-muted uppercase">SqFt</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center items-center text-center group hover:border-AMARI-gold transition-all">
+                <div className="bg-AMARI-button-bg border border-AMARI-border rounded-2xl p-6 flex flex-col justify-center items-center text-center group hover:border-AMARI-gold transition-all">
                   <div className="w-16 h-16 rounded-full bg-AMARI-gold/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Wand2 className="w-8 h-8 text-AMARI-gold" />
                   </div>
-                  <h4 className="text-lg font-bold uppercase tracking-tight mb-2 text-white">A.I. Interior Deco</h4>
-                  <p className="text-xs text-gray-500 mb-6">Experiment with furnishings and decor styles in real-time using our AR engine.</p>
+                  <h4 className="text-lg font-bold uppercase tracking-tight mb-2 text-AMARI-text">A.I. Interior Deco</h4>
+                  <p className="text-xs text-AMARI-text-muted mb-6">Experiment with furnishings and decor styles in real-time using our AR engine.</p>
                   <Button 
-                    className="w-full bg-AMARI-gold text-black hover:bg-white h-12 rounded-xl font-bold uppercase tracking-[0.2em] text-xs"
+                    className="w-full bg-AMARI-gold text-white dark:text-black hover:bg-AMARI-text hover:text-AMARI-panel h-12 rounded-xl font-bold uppercase tracking-[0.2em] text-xs transition-colors"
                     onClick={() => setView('deco')}
                   >
                     Launch Simulator
