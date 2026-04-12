@@ -153,6 +153,49 @@
     }
 }
 
+@layer components {
+  /* AMARI color utility classes */
+  .bg-AMARI-black {
+    @apply bg-[var(--amari-black)];
+  }
+  
+  .bg-AMARI-panel {
+    @apply bg-[var(--amari-panel)];
+  }
+  
+  .bg-AMARI-gold {
+    @apply bg-[var(--amari-gold)];
+  }
+  
+  .bg-AMARI-button-bg {
+    @apply bg-[var(--amari-button-bg)];
+  }
+  
+  .bg-AMARI-button-hover {
+    @apply bg-[var(--amari-button-hover)];
+  }
+  
+  .text-AMARI-text {
+    @apply text-[var(--amari-text)];
+  }
+  
+  .text-AMARI-text-muted {
+    @apply text-[var(--amari-text-muted)];
+  }
+  
+  .text-AMARI-gold {
+    @apply text-[var(--amari-gold)];
+  }
+  
+  .border-AMARI-border {
+    @apply border-[var(--amari-border)];
+  }
+  
+  .bg-AMARI-panel\/80 {
+    @apply bg-[rgba(var(--amari-panel-rgb, 26 26 26) / 0.8)];
+  }
+}
+
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
