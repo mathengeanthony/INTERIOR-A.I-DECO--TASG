@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AIDecoPage from './components/AIDeco/AIDecoPage';
 import { Button } from '@/components/ui/button';
 import { Wand2, ChevronLeft, MapPin, Share2, Heart } from 'lucide-react';
@@ -11,6 +11,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function App() {
   const [view, setView] = useState<'dossier' | 'deco'>('dossier');
+
+  // Set dark mode on initial load
+  useEffect(() => {
+    document.documentElement.classList.add('dark');
+  }, []);
 
   return (
     <div className="min-h-screen bg-AMARI-black text-AMARI-text selection:bg-AMARI-gold selection:text-black transition-colors duration-300">
