@@ -24,7 +24,7 @@ export default function App() {
             className="flex flex-col min-h-screen"
           >
             {/* Simple Dossier Simulation */}
-            <div className="relative h-[40vh] md:h-[60vh] overflow-hidden">
+            <div className="relative h-[10vh] md:h-[15vh] overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2670" 
                 className="w-full h-full object-cover"
@@ -61,7 +61,7 @@ export default function App() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <div className="space-y-4">
+                <div className="space-y-4 hidden md:block">
                   <h3 className="text-sm font-bold uppercase tracking-widest text-AMARI-gold">Property Dossier</h3>
                   <p className="text-sm text-AMARI-text-muted leading-relaxed">
                     Suspended 42 floors above the pulsing heart of the Silicon Savannah, The Vanguard Penthouse is a masterclass in vertical wealth.

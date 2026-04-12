@@ -27,7 +27,11 @@ import {
   Facebook,
   Linkedin,
   Link,
-  MessageCircle
+  MessageCircle,
+  Apple,
+  Phone,
+  User,
+  Instagram
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -196,7 +200,7 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
   return (
     <div className="flex flex-col h-screen bg-AMARI-black text-AMARI-text overflow-hidden font-sans transition-colors duration-300">
       {/* Header */}
-      <header className="flex items-center justify-between px-4 h-16 border-b border-AMARI-border bg-AMARI-panel/80 backdrop-blur-md z-50 flex-shrink-0 transition-colors duration-300">
+      <header className="flex items-center justify-between px-4 h-10 border-b border-AMARI-border bg-AMARI-panel/80 backdrop-blur-md z-50 flex-shrink-0 transition-colors duration-300">
         <div className="flex items-center gap-3">
           <Button variant="ghost" className="text-AMARI-text-muted hover:text-AMARI-text px-2 flex items-center" onClick={onBack}>
             <ChevronLeft className="w-6 h-6 mr-1" />
@@ -254,7 +258,7 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
         {/* Image Section */}
         <div className={cn(
           "relative flex items-center justify-center bg-black transition-all duration-500 overflow-hidden",
-          isFullscreen ? "h-full w-full" : "h-1/2 md:h-full md:w-1/2 p-4 md:p-8"
+          isFullscreen ? "h-full w-full" : "h-1/2 md:h-full md:w-1/2 p-2 md:p-4"
         )}>
           <Card className={cn(
             "relative w-full h-full overflow-hidden border-none bg-black transition-all duration-500",
@@ -380,15 +384,15 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
         {/* Control Section */}
         {!isFullscreen && (
           <div className="flex-1 flex flex-col bg-AMARI-panel/50 backdrop-blur-xl border-l border-AMARI-border overflow-hidden">
-            <div className="p-6 flex flex-col h-full">
+            <div className="p-4 flex flex-col h-full">
               {/* Selector Rows */}
-              <div className="space-y-3 mb-6 flex-shrink-0">
+              <div className="space-y-2 mb-3 flex-shrink-0">
                 {/* Row 1 */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-2">
                   <Button 
                     variant={activeTab === 'rooms' ? 'default' : 'outline'}
                     className={cn(
-                      "h-12 rounded-xl border-AMARI-border text-[10px] font-bold uppercase tracking-widest transition-all",
+                      "h-9 rounded-xl border-AMARI-border text-[10px] font-bold uppercase tracking-widest transition-all",
                       activeTab === 'rooms' 
                         ? "bg-AMARI-gold text-white dark:text-black" 
                         : "bg-black text-white dark:bg-white dark:text-black hover:bg-AMARI-gold hover:text-white dark:hover:bg-AMARI-gold dark:hover:text-black"
@@ -400,7 +404,7 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
                   <Button 
                     variant={activeTab === 'custom' ? 'default' : 'outline'}
                     className={cn(
-                      "h-12 rounded-xl border-AMARI-border text-[10px] font-bold uppercase tracking-widest transition-all",
+                      "h-9 rounded-xl border-AMARI-border text-[10px] font-bold uppercase tracking-widest transition-all",
                       activeTab === 'custom' 
                         ? "bg-AMARI-gold text-white dark:text-black" 
                         : "bg-black text-white dark:bg-white dark:text-black hover:bg-AMARI-gold hover:text-white dark:hover:bg-AMARI-gold dark:hover:text-black"
@@ -412,11 +416,11 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
                 </div>
 
                 {/* Row 2 */}
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-3 gap-2">
                   <Button 
                     variant={activeTab === 'styles' ? 'default' : 'outline'}
                     className={cn(
-                      "h-12 rounded-xl border-AMARI-border text-[9px] font-bold uppercase tracking-widest transition-colors",
+                      "h-9 rounded-xl border-AMARI-border text-[9px] font-bold uppercase tracking-widest transition-colors",
                       activeTab === 'styles' ? "bg-AMARI-gold text-white dark:text-black hover:bg-AMARI-text hover:text-AMARI-panel" : "text-AMARI-text-muted hover:text-AMARI-text bg-AMARI-button-bg hover:bg-AMARI-button-hover"
                     )}
                     onClick={() => setActiveTab('styles')}
@@ -426,7 +430,7 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
                   <Button 
                     variant={activeTab === 'items' ? 'default' : 'outline'}
                     className={cn(
-                      "h-12 rounded-xl border-AMARI-border text-[9px] font-bold uppercase tracking-widest transition-colors",
+                      "h-9 rounded-xl border-AMARI-border text-[9px] font-bold uppercase tracking-widest transition-colors",
                       activeTab === 'items' ? "bg-AMARI-gold text-white dark:text-black hover:bg-AMARI-text hover:text-AMARI-panel" : "text-AMARI-text-muted hover:text-AMARI-text bg-AMARI-button-bg hover:bg-AMARI-button-hover"
                     )}
                     onClick={() => setActiveTab('items')}
@@ -436,7 +440,7 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
                   <Button 
                     variant={activeTab === 'materials' ? 'default' : 'outline'}
                     className={cn(
-                      "h-12 rounded-xl border-AMARI-border text-[9px] font-bold uppercase tracking-widest transition-colors",
+                      "h-9 rounded-xl border-AMARI-border text-[9px] font-bold uppercase tracking-widest transition-colors",
                       activeTab === 'materials' ? "bg-AMARI-gold text-white dark:text-black hover:bg-AMARI-text hover:text-AMARI-panel" : "text-AMARI-text-muted hover:text-AMARI-text bg-AMARI-button-bg hover:bg-AMARI-button-hover"
                     )}
                     onClick={() => setActiveTab('materials')}
@@ -446,7 +450,7 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
                 </div>
               </div>
               
-              <div className="h-px w-full bg-AMARI-border mb-6 flex-shrink-0" />
+              <div className="h-px w-full bg-AMARI-border mb-3 flex-shrink-0" />
 
               {/* Content Area */}
               <div className="flex-1 overflow-y-scroll pr-2 custom-scrollbar">
@@ -709,7 +713,7 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
                 <p className="text-xs text-AMARI-text-muted">Create an account to download high-resolution renders and save your portfolio.</p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
                 <Button 
                   className="w-full h-12 bg-white text-black hover:bg-gray-200 rounded-xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3"
                   onClick={() => { 
@@ -731,20 +735,9 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
                   </svg>
                   Continue with Google
                 </Button>
-                
-                <div className="relative flex items-center py-2">
-                  <div className="flex-grow border-t border-AMARI-border"></div>
-                  <span className="flex-shrink-0 mx-4 text-[10px] uppercase tracking-widest text-AMARI-text-muted">Or</span>
-                  <div className="flex-grow border-t border-AMARI-border"></div>
-                </div>
 
-                <input 
-                  type="email" 
-                  placeholder="ENTER YOUR EMAIL" 
-                  className="w-full h-12 bg-AMARI-button-bg border border-AMARI-border rounded-xl px-4 text-xs text-AMARI-text placeholder-AMARI-text-muted focus:border-AMARI-gold outline-none"
-                />
                 <Button 
-                  className="w-full h-12 bg-AMARI-gold text-white dark:text-black hover:bg-AMARI-text hover:text-AMARI-panel rounded-xl font-bold text-xs uppercase tracking-widest transition-colors"
+                  className="w-full h-12 bg-black text-white border border-white/20 hover:bg-white/10 rounded-xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3"
                   onClick={() => { 
                     setIsAuthenticated(true); 
                     setShowAuthModal(false); 
@@ -756,8 +749,118 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
                     document.body.removeChild(link);
                   }}
                 >
-                  Continue with Email
+                  <Apple className="w-5 h-5" />
+                  Continue with Apple
                 </Button>
+                
+                <div className="relative flex items-center py-2">
+                  <div className="flex-grow border-t border-AMARI-border"></div>
+                  <span className="flex-shrink-0 mx-4 text-[10px] uppercase tracking-widest text-AMARI-text-muted">Or Phone</span>
+                  <div className="flex-grow border-t border-AMARI-border"></div>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="relative">
+                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-AMARI-text-muted" />
+                    <input 
+                      type="text" 
+                      placeholder="FULL NAME" 
+                      className="w-full h-12 bg-AMARI-button-bg border border-AMARI-border rounded-xl pl-10 pr-4 text-xs text-AMARI-text placeholder-AMARI-text-muted focus:border-AMARI-gold outline-none"
+                    />
+                  </div>
+                  <div className="relative">
+                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-AMARI-text-muted" />
+                    <input 
+                      type="tel" 
+                      placeholder="PHONE NUMBER" 
+                      className="w-full h-12 bg-AMARI-button-bg border border-AMARI-border rounded-xl pl-10 pr-4 text-xs text-AMARI-text placeholder-AMARI-text-muted focus:border-AMARI-gold outline-none"
+                    />
+                  </div>
+                  <Button 
+                    className="w-full h-12 bg-AMARI-gold text-white dark:text-black hover:bg-AMARI-text hover:text-AMARI-panel rounded-xl font-bold text-xs uppercase tracking-widest transition-colors"
+                    onClick={() => { 
+                      setIsAuthenticated(true); 
+                      setShowAuthModal(false); 
+                      const link = document.createElement('a');
+                      link.href = currentPreview;
+                      link.download = 'amari-design.jpg';
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                    }}
+                  >
+                    Continue with Phone
+                  </Button>
+                </div>
+
+                <div className="relative flex items-center py-2">
+                  <div className="flex-grow border-t border-AMARI-border"></div>
+                  <span className="flex-shrink-0 mx-4 text-[10px] uppercase tracking-widest text-AMARI-text-muted">Or Email</span>
+                  <div className="flex-grow border-t border-AMARI-border"></div>
+                </div>
+
+                <div className="space-y-2">
+                  <input 
+                    type="email" 
+                    placeholder="ENTER YOUR EMAIL" 
+                    className="w-full h-12 bg-AMARI-button-bg border border-AMARI-border rounded-xl px-4 text-xs text-AMARI-text placeholder-AMARI-text-muted focus:border-AMARI-gold outline-none"
+                  />
+                  <Button 
+                    className="w-full h-12 bg-AMARI-gold text-white dark:text-black hover:bg-AMARI-text hover:text-AMARI-panel rounded-xl font-bold text-xs uppercase tracking-widest transition-colors"
+                    onClick={() => { 
+                      setIsAuthenticated(true); 
+                      setShowAuthModal(false); 
+                      const link = document.createElement('a');
+                      link.href = currentPreview;
+                      link.download = 'amari-design.jpg';
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                    }}
+                  >
+                    Continue with Email
+                  </Button>
+                </div>
+
+                <div className="relative flex items-center py-2">
+                  <div className="flex-grow border-t border-AMARI-border"></div>
+                  <span className="flex-shrink-0 mx-4 text-[10px] uppercase tracking-widest text-AMARI-text-muted">More Options</span>
+                  <div className="flex-grow border-t border-AMARI-border"></div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <Button 
+                    variant="outline"
+                    className="h-10 border-AMARI-border text-AMARI-text hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2] transition-colors flex items-center justify-center gap-2 text-[10px]"
+                    onClick={() => { setIsAuthenticated(true); setShowAuthModal(false); }}
+                  >
+                    <Linkedin className="w-3 h-3" /> LinkedIn
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    className="h-10 border-AMARI-border text-AMARI-text hover:bg-[#E4405F] hover:text-white hover:border-[#E4405F] transition-colors flex items-center justify-center gap-2 text-[10px]"
+                    onClick={() => { setIsAuthenticated(true); setShowAuthModal(false); }}
+                  >
+                    <Instagram className="w-3 h-3" /> Instagram
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    className="h-10 border-AMARI-border text-AMARI-text hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-colors flex items-center justify-center gap-2 text-[10px]"
+                    onClick={() => { setIsAuthenticated(true); setShowAuthModal(false); }}
+                  >
+                    <Facebook className="w-3 h-3" /> Facebook
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    className="h-10 border-AMARI-border text-AMARI-text hover:bg-black hover:text-white hover:border-black dark:hover:bg-white dark:hover:text-black transition-colors flex items-center justify-center gap-2 text-[10px]"
+                    onClick={() => { setIsAuthenticated(true); setShowAuthModal(false); }}
+                  >
+                    <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                    </svg>
+                    TikTok
+                  </Button>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -842,10 +945,10 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
                     type="text" 
                     readOnly
                     value={window.location.href}
-                    className="flex-1 h-12 bg-AMARI-button-bg border border-AMARI-border rounded-xl px-4 text-xs text-AMARI-text outline-none"
+                    className="flex-1 min-w-0 h-12 bg-AMARI-button-bg border border-AMARI-border rounded-xl px-4 text-xs text-AMARI-text outline-none"
                   />
                   <Button 
-                    className="h-12 px-6 bg-AMARI-gold text-white dark:text-black hover:bg-AMARI-text hover:text-AMARI-panel rounded-xl font-bold text-xs uppercase tracking-widest transition-colors flex items-center gap-2"
+                    className="flex-shrink-0 h-12 px-6 bg-AMARI-gold text-white dark:text-black hover:bg-AMARI-text hover:text-AMARI-panel rounded-xl font-bold text-xs uppercase tracking-widest transition-colors flex items-center gap-2"
                     onClick={() => {
                       navigator.clipboard.writeText(window.location.href);
                       alert('Link copied to clipboard!');
