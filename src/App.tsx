@@ -14,7 +14,9 @@ export default function App() {
 
   // Set dark mode on initial load
   useEffect(() => {
+    console.log("[v0] Setting dark mode");
     document.documentElement.classList.add('dark');
+    console.log("[v0] Dark mode class added, current classes:", document.documentElement.className);
   }, []);
 
   return (
