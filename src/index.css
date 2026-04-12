@@ -191,9 +191,10 @@
     @apply border-[var(--amari-border)];
   }
   
-  .bg-AMARI-panel\/80 {
-    @apply bg-[rgba(var(--amari-panel-rgb, 26 26 26) / 0.8)];
-  }
+}
+
+.bg-AMARI-panel\/80 {
+  background-color: color-mix(in srgb, var(--amari-panel) 80%, transparent);
 }
 
 .custom-scrollbar::-webkit-scrollbar {
