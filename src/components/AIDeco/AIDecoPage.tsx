@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   Wand2, 
   Image as ImageIcon, 
@@ -940,7 +940,7 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
                   <span className="flex-shrink-0 mx-4 text-[10px] uppercase tracking-widest text-AMARI-text-muted">Or copy link</span>
                   <div className="flex-grow border-t border-AMARI-border"></div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <input 
                     type="text" 
                     readOnly
@@ -948,7 +948,7 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
                     className="flex-1 min-w-0 h-12 bg-AMARI-button-bg border border-AMARI-border rounded-xl px-4 text-xs text-AMARI-text outline-none"
                   />
                   <Button 
-                    className="flex-shrink-0 h-12 px-6 bg-AMARI-gold text-white dark:text-black hover:bg-AMARI-text hover:text-AMARI-panel rounded-xl font-bold text-xs uppercase tracking-widest transition-colors flex items-center gap-2"
+                    className="w-full sm:w-auto flex-shrink-0 h-12 px-6 bg-AMARI-gold text-white dark:text-black hover:bg-AMARI-text hover:text-AMARI-panel rounded-xl font-bold text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2"
                     onClick={() => {
                       navigator.clipboard.writeText(window.location.href);
                       alert('Link copied to clipboard!');

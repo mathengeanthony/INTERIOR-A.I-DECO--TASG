@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import AIDecoPage from './components/AIDeco/AIDecoPage';
 import { Button } from '@/components/ui/button';
 import { Wand2, ChevronLeft, MapPin, Share2, Heart } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 
 export default function App() {
   const [view, setView] = useState<'dossier' | 'deco'>('dossier');
@@ -24,7 +24,7 @@ export default function App() {
             className="flex flex-col min-h-screen"
           >
             {/* Simple Dossier Simulation */}
-            <div className="relative h-[10vh] md:h-[15vh] overflow-hidden">
+            <div className="relative h-[5vh] md:h-[8vh] overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2670" 
                 className="w-full h-full object-cover"

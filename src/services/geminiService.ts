@@ -1,6 +1,17 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+let ai: GoogleGenAI | null = null;
+
+function getAIClient() {
+  if (!ai) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      throw new Error("GEMINI_API_KEY is not set. Please configure it in your environment variables.");
+    }
+    ai = new GoogleGenAI({ apiKey });
+  }
+  return ai;
+}
 
 export interface DecoRequest {
   image: string; // base64
@@ -32,7 +43,8 @@ export async function generateDecoPreview({ image, prompt, style }: DecoRequest)
     base64Data = image.split(',')[1];
   }
 
-  const response = await ai.models.generateContent({
+  const client = getAIClient();
+  const response = await client.models.generateContent({
     model: 'gemini-2.5-flash-image',
     contents: {
       parts: [
