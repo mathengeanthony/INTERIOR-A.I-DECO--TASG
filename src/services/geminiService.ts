@@ -4,48 +4,68 @@ export interface DecoRequest {
   style?: string;
 }
 
+async function imageUrlToBase64(url: string): Promise<string> {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64String = reader.result as string;
+      resolve(base64String.split(',')[1]);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
 export async function generateDecoPreview({ image, prompt, style }: DecoRequest) {
   const fullPrompt = `Professional interior design, ${prompt}. ${style ? `Style: ${style}. ` : ''}High quality, photorealistic, architectural photography, 8k resolution, highly detailed, luxury real estate.`;
 
-  // Ensure image is a data URL if it's base64
-  let imageUrl = image;
-  if (!image.startsWith('http') && !image.startsWith('data:')) {
-    imageUrl = `data:image/jpeg;base64,${image}`;
+  // Extract raw base64 data
+  let base64Data = image;
+  if (image.startsWith('http')) {
+    base64Data = await imageUrlToBase64(image);
+  } else if (image.includes('base64,')) {
+    base64Data = image.split(',')[1];
   }
 
-  const falKey = process.env.FAL_KEY || (import.meta as any).env?.VITE_FAL_KEY;
-  if (!falKey) {
-    throw new Error("FAL_KEY is not set. Please configure it in your Vercel environment variables.");
+  // Convert base64 to Blob for FormData
+  const byteString = atob(base64Data);
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
+  for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
   }
+  const blob = new Blob([ab], { type: 'image/jpeg' });
 
-  const response = await fetch('https://fal.run/fal-ai/flux/dev/image-to-image', {
+  const formData = new FormData();
+  formData.append('image', blob, 'room.jpg');
+  formData.append('prompt', fullPrompt);
+  formData.append('control_strength', '0.65'); // 0.65 gives freedom to change furniture while keeping walls
+  formData.append('output_format', 'jpeg');
+
+  // EMERGENCY DEMO KEY - Hardcoded to bypass Vercel env var issues instantly
+  const apiKey = "sk-Q5McmOkDbHi7dzUjGK5TGdauW5J18hrIe6CfbOIclvz8kZyt";
+
+  const response = await fetch('https://api.stability.ai/v2beta/stable-image/control/structure', {
     method: 'POST',
     headers: {
-      'Authorization': `Key ${falKey}`,
-      'Content-Type': 'application/json'
+      'Authorization': `Bearer ${apiKey}`,
+      'Accept': 'application/json'
     },
-    body: JSON.stringify({
-      image_url: imageUrl,
-      prompt: fullPrompt,
-      strength: 0.85, // 0.85 gives it enough freedom to change furniture while keeping walls
-      guidance_scale: 3.5,
-      num_inference_steps: 28
-    })
+    body: formData
   });
 
   if (!response.ok) {
     const errorText = await response.text();
-    if (response.status === 402 || errorText.includes('credit')) {
-      throw new Error("Fal.ai requires a billing method on file to activate the free trial credits. Please add a card to Fal.ai (it won't be charged).");
-    }
-    throw new Error(`Fal.ai API error (${response.status}): ${errorText}`);
+    throw new Error(`Stability AI error (${response.status}): ${errorText}`);
   }
 
   const data = await response.json();
   
-  if (data.images && data.images.length > 0) {
-    return data.images[0].url;
+  if (data.image) {
+    return `data:image/jpeg;base64,${data.image}`;
   }
   
-  throw new Error("Failed to generate image preview from Fal.ai");
+  throw new Error("Failed to generate image preview from Stability AI");
 }
