@@ -161,8 +161,9 @@ export default function AIDecoPage({ onBack }: { onBack: () => void }) {
       setCurrentPreview(result);
       setHistory(prev => [...prev, result]);
       setShowCompare(true);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Generation failed:", error);
+      alert(`Generation failed: ${error.message || error}`);
     } finally {
       setIsGenerating(false);
     }
